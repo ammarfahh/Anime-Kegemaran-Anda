@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Anime Kegemaran Anda</title>
+</head>
+<body style="background-image: url('https://thumbs.dreamstime.com/b/nice-theme-landscape-anime-background-colors-349421212.jpg'); background-size: cover; background-attachment: fixed; color: #ffffff;">
+    <h1>Anime Kegemaran Anda</h1>
+
+    <p>Selamat datang! Pilih anime kegemaran anda dan tulis komen.</p>
+
+    <img src="anime.jpg" alt="Gambar anime" width="300">
+    <p>Letakkan gambar bernama <b>anime.jpg</b> dalam folder yang sama dengan fail HTML ini.</p>
+
+    <p><a href="#borang">Pergi ke borang komen</a></p>
+
+    <h2>Borang Komen</h2>
+    <form id="borang">
+        <p>
+            <label for="nama">Nama pengguna:</label><br>
+            <input type="text" id="nama" required>
+        </p>
+
+        <p>
+            <label for="anime">Pilih anime:</label><br>
+            <select id="anime" required>
+                <option value="">-- Sila pilih anime --</option>
+                <option value="OneHa Pieace">OneHa Pieace</option>
+                <option value="Aidi Anime">Aidi Anime</option>
+                <option value="Jayden Nime">Jayden Nime</option>
+                <option value="Blue Idraki Lock">Blue Idraki Lock</option>
+            </select>
+        </p>
+
+        <p>
+            <label for="komen">Ruang komen:</label><br>
+            <textarea id="komen" rows="5" cols="30" required></textarea>
+        </p>
+
+        <input type="submit" value="Hantar Komen">
+        <input type="button" id="padam" value="Padam">
+    </form>
+
+    <h2>Komen Pengguna</h2>
+    <div id="senaraiKomen">
+        <p>Komen yang dihantar akan dipaparkan di sini.</p>
+    </div>
+
+    <script>
+        var borang = document.getElementById("borang");
+        var senaraiKomen = document.getElementById("senaraiKomen");
+
+        borang.onsubmit = function(event) {
+            event.preventDefault();
+
+            var nama = document.getElementById("nama").value;
+            var anime = document.getElementById("anime").value;
+            var komen = document.getElementById("komen").value;
+
+            var komenBaharu = document.createElement("p");
+            komenBaharu.textContent = "Nama pengguna: " + nama +
+                " | Anime: " + anime + " | Komen: " + komen;
+            senaraiKomen.appendChild(komenBaharu);
+
+            borang.reset();
+        };
+
+        document.getElementById("padam").onclick = function() {
+            borang.reset();
+            senaraiKomen.innerHTML = "";
+            senaraiKomen.textContent = "Komen yang dihantar akan dipaparkan di sini.";
+        };
+    </script>
+</body>
+</html>
